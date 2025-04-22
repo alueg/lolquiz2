@@ -14,12 +14,29 @@ function displayImage(imagePath, duration) {
     };
   }
   
+  function instructions() {
+    return {
+      type: jsPsychInstructions,
+      pages: [
+        'In this task, you will be shown an image of a character',
+        
+        'After 3 seconds, the image will disappear, and you will be asked to complete two tasks',
+        '1. Answer the question: "Was this character from League of Legends?" <br><br>' +
+        '2. Rate how confident you are in your answer, on a scale from 1 (not confident) to 5 (very confident)',
+        'Click "Next" to begin the experiment.'
+      ],
+      show_clickable_nav: true
+    };
+  }
+  
+  
+  
   function question() {
     return {
       type: jsPsychSurveyMultiChoice,
       questions: [
         {
-          prompt: "Is this character from League of Legends?",
+          prompt: "Was this character from League of Legends?",
           name: 'league_test',
           options: ["Yes", "No"],
           required: true,
@@ -36,12 +53,11 @@ function displayImage(imagePath, duration) {
     };
   }
   
-
   function goodbye() {
     return {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "Thank you for your participation. You may now close the window.",
-      choices: "NO_KEYS"  // or `[" "]` if you want them to press something to continue
+      choices: "NO_KEYS"
     };
   }
   
