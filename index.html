@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="https://unpkg.com/jspsych@8.2.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.3"></script>
+
+    <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
+    <link href="https://unpkg.com/jspsych@8.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+
+    /* initialize jsPsych */
+    var jsPsych = initJsPsych();
+
+    /* create timeline */
+    var timeline = [];
+
+    /* define welcome message trial */
+    var welcome = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Welcome! Press any key to begin."
+    };
+    timeline.push(welcome);
+
+    var lux = {
+    type: jsPsychImageKeyboardResponse,
+    stimulus: 'images/lux.jpg',  // replace with the actual path to your image
+    choices: 'NO_KEYS',  // No keys will be detected, so the image will stay up for the specified time
+    trial_duration: 3000  // Display image for 3000 ms (3 seconds)
+    };
+
+    timeline.push(lux);
+
+    var question = ({
+    type: jsPsychSurveyMultiChoice,
+    questions: [
+      {
+        prompt: "Is this character from League of Legends?",
+        name: 'league_test',
+        options: ["Yes", "No"],
+        required: true,
+        horizontal: true
+      }
+    ]
+    });
+
+    timeline.push(question);
+
+    /* start the experiment */
+    jsPsych.run(timeline);
+
+  </script>
+</html>
