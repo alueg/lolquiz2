@@ -1,1 +1,0 @@
-// Placeholder for jspsych-survey-multi-choice.js
