@@ -10,60 +10,6 @@
     <link href="https://unpkg.com/jspsych@8.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body></body>
-  <script>
-
-    /* initialize jsPsych */
-    var jsPsych = initJsPsych();
-
-    /* create timeline */
-    var timeline = [];
-
-    var imageDisplayDuration = 3000; // 3000 ms (3 seconds)
-
-    /* define welcome message trial */
-    var welcome = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: "Welcome! Press any key to begin."
-    };
-    timeline.push(welcome);
-
-    /* Function to display image */
-    function displayImage(imagePath, duration) {
-      return {
-        type: jsPsychImageKeyboardResponse,
-        stimulus: imagePath,
-        choices: 'NO_KEYS',  // No keys will be detected, so the image will stay up for the specified time
-        trial_duration: duration  // Display image for specified duration
-      };
-    }
-
-    /* Add images with the function */
-    timeline.push(displayImage('images/lux.jpg', imageDisplayDuration));  // Display lux.jpg for 3 seconds
-
-    /* Define question trial */
-    var question = {
-      type: jsPsychSurveyMultiChoice,
-      questions: [
-        {
-          prompt: "Is this character from League of Legends?",
-          name: 'league_test',
-          options: ["Yes", "No"],
-          required: true,
-          horizontal: true
-        }
-      ]
-    };
-
-    timeline.push(question);
-
-    timeline.push(displayImage('images/valo.jpg', imageDisplayDuration)); // Display valo.jpg for 3 seconds
-
-    timeline.push(question);
-
-
-
-    /* start the experiment */
-    jsPsych.run(timeline);
-
-  </script>
+  <script src="js/functions.js"></script>
+  <script src="js/timeline.js"></script>
 </html>
